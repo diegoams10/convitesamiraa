@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite Especial para Samira</title>
+    <!-- Carrega o Tailwind CSS para estilização fácil e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Estilos gerais para o corpo da página */
+        body {
+            font-family: 'Inter', sans-serif; /* Fonte moderna e legível */
+            background-color: #f0f2f5; /* Cor de fundo suave */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ocupa a altura total da tela */
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* Evita barras de rolagem quando o botão "Não" se move */
+            position: relative; /* Necessário para o posicionamento absoluto do botão "Não" */
+        }
+        /* Estilo para o cartão principal do convite */
+        .card {
+            background-color: #ffffff; /* Fundo branco */
+            padding: 40px;
+            border-radius: 20px; /* Cantos arredondados */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra suave */
+            text-align: center;
+            width: 100%;
+            max-width: 600px; /* Largura máxima para boa leitura */
+            position: relative;
+            z-index: 10; /* Garante que o cartão fique acima de outros elementos, mas abaixo do botão "Não" */
+        }
+        /* Estilo para o título principal */
+        h1 {
+            color: #e53e3e; /* Cor vermelha para um toque romântico */
+            font-size: 2.5rem; /* Tamanho grande do título */
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        /* Estilo para os parágrafos de texto */
+        p {
+            color: #4a5568; /* Cor de texto padrão */
+            font-size: 1.125rem; /* Tamanho de fonte legível */
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        /* Estilo para a lista de filmes */
+        ul {
+            list-style: none; /* Remove os marcadores de lista padrão */
+            padding: 0;
+            margin-bottom: 30px;
+        }
+        /* Estilo para cada item da lista de filmes */
+        li {
+            background-color: #f7fafc; /* Fundo claro para os itens da lista */
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 8px; /* Cantos arredondados */
+            border: 1px solid #e2e8f0; /* Borda sutil */
+            color: #2d3748;
+            font-weight: 500;
+        }
+        /* Container para os botões */
+        .button-container {
+            display: flex;
+            justify-content: center; /* Centraliza os botões */
+            gap: 20px; /* Espaçamento entre os botões */
+            margin-top: 30px;
+        }
+        /* Estilo base para todos os botões */
+        .btn {
+            padding: 15px 35px;
+            border-radius: 12px; /* Cantos bem arredondados */
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease; /* Transição suave para efeitos de hover */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Sombra para profundidade */
+            border: none;
+            font-size: 1.25rem; /* Tamanho de fonte para os botões */
+        }
+        /* Estilo específico para o botão "Sim" */
+        .btn-yes {
+            background-color: #48bb78; /* Verde para uma ação positiva */
+            color: white;
+        }
+        .btn-yes:hover {
+            background-color: #38a169; /* Verde mais escuro no hover */
+            transform: translateY(-3px); /* Efeito de "levantar" no hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        /* Estilo específico para o botão "Não" (flutuante) */
+        .btn-no {
+            background-color: #ef4444; /* Vermelho para uma ação negativa */
+            color: white;
+            position: absolute; /* Permite que o botão se mova livremente na tela */
+            transition: all 0.3s ease-out; /* Movimento suave e rápido */
+            /* Aumenta o z-index para garantir que o botão "Não" fique sempre na frente */
+            z-index: 100;
+        }
+        .btn-no:hover {
+            background-color: #dc2626; /* Vermelho mais escuro no hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Estilo para a caixa de mensagem de confirmação */
+        .message-box {
+            background-color: #ebf8ff; /* Fundo azul claro */
+            color: #2b6cb0; /* Texto azul escuro */
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #bee3f8; /* Borda azul clara */
+            margin-top: 20px;
+            text-align: center;
+            display: none; /* Escondido por padrão */
+            font-size: 1rem;
+        }
+        .message-box.show {
+            display: block; /* Mostra a caixa de mensagem */
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Um Convite Especial para Você, Samira! ❤️</h1>
+        <p>Tenho pensado em você e em como seria bom passarmos um tempo juntos. Que tal uma noite de filmes românticos? Preparei uma lista especial só para nós:</p>
+        <ul>
+            <li>✨ Antes do Amanhecer</li>
+            <li>✨ Amor e Outras Drogas</li>
+            <li>✨ Para Sempre</li>
+            <li>✨ Brilho Eterno de Uma Mente Sem Lembranças</li>
+        </ul>
+        <p>Seria muito legal ter sua companhia. O que você acha?</p>
+
+        <div class="button-container">
+            <button class="btn btn-yes" id="btnYes">Sim, Adoraria!</button>
+        </div>
+
+        <div id="messageBox" class="message-box">
+            Obrigado(a) por aceitar! Vou te enviar uma mensagem no WhatsApp.
+        </div>
+    </div>
+
+    <!-- O botão "Não" está fora do cartão para que possa se mover livremente pela tela -->
+    <button class="btn btn-no" id="btnNo">Não, Obrigado(a)</button>
+
+    <script>
+        const btnNo = document.getElementById('btnNo');
+        const btnYes = document.getElementById('btnYes');
+        const messageBox = document.getElementById('messageBox');
+
+        // IMPORTANTE: Substitua 'SEU_NUMERO_WHATSAPP_AQUI' pelo seu número de WhatsApp.
+        // Inclua o código do país (ex: 55 para Brasil), mas SEM o '+' ou '00'.
+        // Exemplo: Para o número (11) 98765-4321 no Brasil, use '5511987654321'.
+        const myWhatsAppNumber = '5569993121314'; // <--- SEU NÚMERO DE WHATSAPP AQUI!
+
+        // Função para mover o botão "Não" para uma posição aleatória na tela
+        function moveNoButton() {
+            const btnNoRect = btnNo.getBoundingClientRect();
+
+            // Define um padding para que o botão não encoste nas bordas da tela
+            const padding = 20;
+            const maxX = window.innerWidth - btnNoRect.width - padding;
+            const maxY = window.innerHeight - btnNoRect.height - padding;
+
+            // Gera posições aleatórias dentro dos limites da tela
+            let newX = Math.random() * maxX + padding;
+            let newY = Math.random() * maxY + padding;
+
+            // Aplica as novas posições ao botão
+            btnNo.style.left = `${newX}px`;
+            btnNo.style.top = `${newY}px`;
+            btnNo.style.transform = 'none'; // Garante que não haja transformações CSS que interfiram
+        }
+
+        // Adiciona um "listener" para quando o mouse passar sobre o botão "Não"
+        // ou quando ele receber o foco (para acessibilidade), fazendo-o se mover.
+        btnNo.addEventListener('mouseenter', moveNoButton);
+        btnNo.addEventListener('focus', moveNoButton);
+
+        // Adiciona um "listener" para quando o botão "Sim" for clicado
+        btnYes.addEventListener('click', () => {
+            // Exibe a mensagem de agradecimento
+            messageBox.textContent = 'Obrigado(a) por aceitar! Vou te enviar uma mensagem no WhatsApp.';
+            messageBox.classList.add('show');
+
+            // Constrói a URL do WhatsApp com uma mensagem pré-definida
+            const whatsappMessage = encodeURIComponent("Samira aceitou assistir filmes! 🎉");
+            const whatsappUrl = `https://wa.me/${myWhatsAppNumber}?text=${whatsappMessage}`;
+
+            // Abre o link do WhatsApp em uma nova aba após um pequeno atraso
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1500); // 1.5 segundos de atraso para a mensagem aparecer
+        });
+
+        // Posiciona o botão "Não" inicialmente próximo ao botão "Sim" quando a página carrega
+        window.onload = () => {
+            const btnYesRect = btnYes.getBoundingClientRect(); // Pega a posição do botão "Sim"
+            const btnNoRect = btnNo.getBoundingClientRect();   // Pega a posição do botão "Não"
+
+            // Centraliza o botão "Não" horizontalmente com o "Sim" e o posiciona 20px abaixo dele
+            btnNo.style.left = `${btnYesRect.left + (btnYesRect.width / 2) - (btnNoRect.width / 2)}px`;
+            btnNo.style.top = `${btnYesRect.bottom + 20}px`;
+            btnNo.style.transform = 'none'; // Remove qualquer transformação inicial para posicionamento exato
+        };
+    </script>
+</body>
+</html>
